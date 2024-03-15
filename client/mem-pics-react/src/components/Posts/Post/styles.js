@@ -1,6 +1,4 @@
-import { makeStyles } from "@mui/material";
-
-export default makeStyles({
+export const styles = {
   media: {
     height: 0,
     paddingTop: "56.25%",
@@ -30,7 +28,7 @@ export default makeStyles({
   overlay2: {
     position: "absolute",
     top: "20px",
-    left: "20px",
+    right: "20px",
     color: "white",
   },
 
@@ -53,4 +51,4 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
-});
+};

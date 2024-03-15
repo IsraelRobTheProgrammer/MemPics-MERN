@@ -1,23 +1,23 @@
-import { makeStyles } from "@mui/material";
-import { spacing } from "@mui/system";
+// // import { spacing } from "@mui/system";
+// // const spacingValue = spacing(1);
+import { createTheme } from "@mui/system";
 
-// const spacingValue = spacing(1);
-
-// export const formStyles = {
-//   textField: {
-//     margin: spacingValue,
-//   },
-// };
-
-export default makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-    },
+export const styles = {
+  paper: {
+    padding: createTheme().spacing(2),
   },
 
-  paper: {
-    padding: theme.spacing(2),
+  root: {
+    "& .MuiTextField-root": {
+      margin: createTheme().spacing(1),
+    },
+  },
+  textField: {
+    margin: createTheme().spacing(1),
+  },
+
+  buttonSubmit: {
+    marginBottom: "10px",
   },
 
   form: {
@@ -28,50 +28,89 @@ export default makeStyles((theme) => ({
 
   fileInput: {
     width: "97%",
+    height: "80%",
     margin: "10px 0",
   },
+};
 
-  buttonSubmit: {
-    marginBottom: 10,
-  },
-}));
+// import { createTheme } from "@mui/material";
 
-// export const styles = {
-//   appBar: {
-//     borderRadius: 15,
-//     margin: "30px 0",
-//     display: "flex",
-//     flexDirection: "row",
-//     justifyContent: "center",
-//     alignItems: "center",
+// export const MyTheme = createTheme({
+//   palette: {
+
+//     paper: {
+//       padding: createTheme().spacing(2),
+//     },
+
+//     root: {
+//       "& .MuiTextField-root": {
+//         margin: createTheme().spacing(1),
+//       },
+//     },
+//     textField: {
+//       margin: createTheme().spacing(1),
+//     },
+
+//     buttonSubmit: {
+//       marginBottom: "10px",
+//     },
+
+//     form: {
+//       display: "flex",
+//       flexWrap: "wrap",
+//       justifyContent: "center",
+//     },
+
+//     fileInput: {
+//       width: "97%",
+//       height: "80%",
+//       margin: "10px 0",
+//     },
 //   },
-//   heading: {
-//     color: "rgba(0,183,255,1)",
-//   },
-//   image: {
-//     marginLeft: "15px",
-//   },
-// };
+// });
 
-// import { TextField, Paper, Box, Button } from "@mui/material";
-//   import { spacing } from "@mui/system";
+// // export const styles = {};
 
-// export default function MyComponent() {
-// const spacingValue = spacing(1); // Assuming theme spacing is set
+// // export const styles = {
+// //   appBar: {
+// //     borderRadius: 15,
+// //     margin: "30px 0",
+// //     display: "flex",
+// //     flexDirection: "row",
+// //     justifyContent: "center",
+// //     alignItems: "center",
+// //   },
+// //   heading: {
+// //     color: "rgba(0,183,255,1)",
+// //   },
+// //   image: {
+// //     marginLeft: "15px",
+// //   },
+// // };
 
-//   return (
-//     <Paper sx={{ padding: 2 }}>
-//       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-//         <TextField sx={{ margin: spacingValue, width: "97%" }} />
-//         <TextField sx={styles.textField} />
-//         <Button
-//           variant="contained"
-//           type="submit"
-//           sx={{ margin: "10px 0", marginBottom: 10 }}
-//         >
-//           Submit
-//         </Button>
-//       </Box>
-//     </Paper>
-//   );
-// }
+// // // const theme = {
+// // //   spacing:8
+// // // }
+
+// // // import { TextField, Paper, Box, Button } from "@mui/material";
+// // //   import { spacing } from "@mui/system";
+
+// // // export default function MyComponent() {
+// // // const spacingValue = spacing(1); // Assuming theme spacing is set
+
+// // //   return (
+// // //     <Paper sx={{ padding: 2 }}>
+// // //       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+// // //         <TextField sx={{ margin: spacingValue, width: "97%" }} />
+// // //         <TextField sx={styles.textField} />
+// // //         <Button
+// // //           variant="contained"
+// // //           type="submit"
+// // //           sx={{ margin: "10px 0", marginBottom: 10 }}
+// // //         >
+// // //           Submit
+// // //         </Button>
+// // //       </Box>
+// // //     </Paper>
+// // //   );
+// // // }

@@ -6,7 +6,7 @@ export const getPosts = async (req, res) => {
     console.log(postMsgs);
     console.log("once");
 
-    res.status(200).json({ postMsgs });
+    res.status(200).json(postMsgs);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });
