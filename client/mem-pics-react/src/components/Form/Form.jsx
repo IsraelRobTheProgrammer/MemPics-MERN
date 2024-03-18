@@ -1,12 +1,14 @@
 import { styles } from "./styles";
 
 import { TextField, Button, Typography, Paper } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
+  const delimiters = /[,;!\s+]/;
+  // /\s*[,;!]\s*/
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -14,14 +16,38 @@ const Form = () => {
     tags: "",
     selectedFile: "",
   });
+
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((post) => post._id == currentId) : null
+  );
+  const clear = () => {
+    setCurrentId(null);
+
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+      clear();
+    } else {
+      dispatch(createPost(postData));
+      clear();
+    }
   };
-  const clear = () => {};
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
 
   return (
     <Paper sx={styles.paper}>
@@ -32,7 +58,9 @@ const Form = () => {
         style={styles.form}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Creating A MemPic</Typography>
+        <Typography variant="h6">
+          {currentId ? "Editing" : "Creating"} A MemPic
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
@@ -74,7 +102,9 @@ const Form = () => {
           fullWidth
           sx={styles.textField}
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(/[,;!\s+]/) })
+          }
         />
 
         <div style={styles.fileInput}>
