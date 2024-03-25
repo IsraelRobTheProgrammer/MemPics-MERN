@@ -59,7 +59,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? "Editing" : "Creating"} A MemPic
+          {currentId ? `Editing "${post.title}"` : "Creating A MemPic"}
         </Typography>
         <TextField
           name="creator"
@@ -88,6 +88,8 @@ const Form = ({ currentId, setCurrentId }) => {
           variant="outlined"
           label="Message"
           fullWidth
+          multiline
+          rows={4}
           sx={styles.textField}
           value={postData.message}
           onChange={(e) =>

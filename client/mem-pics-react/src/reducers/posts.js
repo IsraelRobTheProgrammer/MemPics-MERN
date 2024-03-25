@@ -1,19 +1,20 @@
+import { CREATE, DELETE, FETCH_ALL, UPDATE } from "../constants/actionTypes";
+
 export default (posts = [], action) => {
   switch (action.type) {
-    case "CREATE":
+    case CREATE:
       return [...posts, action.payload];
 
-    case "FETCH_ALL":
+    case FETCH_ALL:
       console.log("in fetch all");
       return action.payload;
 
-    case "UPDATE":
-      // case "LIKE":
+    case UPDATE:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
 
-    case "DELETE":
+    case DELETE:
       return posts.filter((post) => post._id !== action.payload);
 
     default:
